@@ -19,13 +19,8 @@ public class BaseTest {
         open(BASE_LINK);
         Configuration.browserSize = BROWSER_SIZE;
 
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-        homePage = new HomePage();
-        homePage.closeCookiesPopUp();
+//        homePage = new HomePage();
+//        homePage.closeCookiesPopUp();
     }
 
 
