@@ -1,20 +1,21 @@
 package Test;
 
-import static com.codeborne.selenide.Selenide.*;
-
+import lombok.extern.slf4j.Slf4j;
 import org.testng.annotations.Test;
 import pageobject.HomePage;
+import pageobject.SearchPage;
 
-public class SearchTests {
-    private HomePage homePage = new HomePage();
-
+@Slf4j
+public class SearchTests extends BaseTest{
+    private HomePage homePage;
+    private SearchPage searchPage;
     @Test
     public void test() {
-        open("https://www.autoscout24.com/");
+        homePage = new HomePage();
         homePage.clickVehicleTypeSearchTab("bike");
         homePage.selectVehicleManufacturer("bike", "BMW");
-        homePage.clickSearchButton();
-
+        homePage.selectVehicleModel("bike", "F 650 CS");
+        searchPage = homePage.clickSearchButton();
+        log.info("The amount of found vehicles is " + searchPage.getSearchResultsAmount());
     }
-
 }
