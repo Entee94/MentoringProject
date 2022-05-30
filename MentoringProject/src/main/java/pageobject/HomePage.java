@@ -16,9 +16,11 @@ public class HomePage {
     private static final String MAKE_DROPDOWN_LOCATOR = "//*[@aria-label='%ss-make-filter']";
     private static final String MODEL_DROPDOWN_LOCATOR = "//*[@aria-label='%ss-model-filter']";
     private static final String DROPDOWN_VALUE_LOCATOR = "//*[contains(text(), '%s')]";
+    private static final String COOKIE_IFRAME_ID = "gdpr-consent-notice";
 
     private SelenideElement searchButton = $(By.xpath("//*[@class='hf-searchmask-form__filter__search-button sc-btn-bob sc-absolute-center']"));
-    private SelenideElement acceptCookiesButton = $(By.xpath("//*[@id = 'save']//*[@class = 'mat-button-focus-overlay']"));
+    private SelenideElement acceptCookiesButton = $(By.xpath("//*[@id = 'save']"));
+    private SelenideElement logo = $(By.xpath("//a[@title='AutoScout24']"));
 
     public void clickVehicleTypeSearchTab(String vehicleType) {
         log.info("Click " + vehicleType + " Search tab");
@@ -46,8 +48,12 @@ public class HomePage {
 
     public void closeCookiesPopUp() {
 
-//        executeJavaScript("document.getElementById(\"save\").click()");
-          acceptCookiesButton.should(Condition.exist, Duration.ofSeconds(10));
-          acceptCookiesButton.click();
+        switchTo().frame(COOKIE_IFRAME_ID);
+        acceptCookiesButton.should(Condition.exist, Duration.ofSeconds(10));
+        acceptCookiesButton.click();
+    }
+
+    public boolean isLogoPresent() {
+        return logo.exists();
     }
 }
