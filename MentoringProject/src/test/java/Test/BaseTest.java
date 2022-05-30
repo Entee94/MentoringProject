@@ -3,6 +3,8 @@ package Test;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Condition.*;
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.WebDriverRunner;
+import org.openqa.selenium.Cookie;
 import org.testng.annotations.*;
 import pageobject.HomePage;
 
@@ -18,9 +20,14 @@ public class BaseTest {
     public void tearUp(){
         open(BASE_LINK);
         Configuration.browserSize = BROWSER_SIZE;
+        homePage = new HomePage();
+        homePage.closeCookiesPopUp();
 
-//        homePage = new HomePage();
-//        homePage.closeCookiesPopUp();
+    }
+
+    @AfterClass
+    public void tearDown(){
+        closeWebDriver();
     }
 
 
