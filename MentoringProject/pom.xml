@@ -13,6 +13,7 @@
         <maven.compiler.target>8</maven.compiler.target>
 <!--        <suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>-->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <testng.files.location>src/test/resources/</testng.files.location>
     </properties>
 
     <dependencies>
@@ -59,10 +60,16 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0-M6</version>
                 <configuration>
+                    <systemPropertyVariables>
+                        <selenide.timeout>20000</selenide.timeout>
+                        <selenide.screenshots>false</selenide.screenshots>
+                        <selenide.dismissModalDialogs>true</selenide.dismissModalDialogs>
+                        <selenide.openBrowserTimeout>30000</selenide.openBrowserTimeout>
+                    </systemPropertyVariables>
                     <suiteXmlFiles>
                         <suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
-<!--                        <suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>-->
-<!--                        <suiteXmlFile>src/test/resources/testng2.xml</suiteXmlFile>-->
+                        <suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
+                        <suiteXmlFile>src/test/resources/testng2.xml</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
             </plugin>

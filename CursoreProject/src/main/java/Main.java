@@ -1,3 +1,14 @@
+import sun.awt.CharsetString;
+
+import java.io.*;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.OpenOption;
+import java.nio.file.StandardOpenOption;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
 public class Main {
 
     int variableForReference = 8;
@@ -7,13 +18,20 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Main main = new Main();
+        //Main main = new Main();
         //main.ifElseExample();
         //main.switchExample();
         //main.forExample();
         //main.forEachExample();
         //main.whileExample();
         //main.doWhileExample();
+        ExeptionsExamples examples = new ExeptionsExamples();
+//        examples.checkedException();
+       // examples.indexOutOfBounds();
+       // examples.multiCheck();
+//        examples.simpleTry();
+//        examples.tryWithResources();
+
     }
 
     public void ifElseExample() {
@@ -82,6 +100,5 @@ public class Main {
     public void doNothing() {
         System.out.println("I did nothing");
     }
-
 
 }

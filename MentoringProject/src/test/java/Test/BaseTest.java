@@ -18,8 +18,8 @@ public class BaseTest {
 
     @BeforeClass
     public void tearUp(){
-        open(BASE_LINK);
         Configuration.browserSize = BROWSER_SIZE;
+        open(BASE_LINK);
         homePage = new HomePage();
         homePage.closeCookiesPopUp();
 
